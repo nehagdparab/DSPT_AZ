@@ -1,4 +1,4 @@
-from flask import Flask,request,render_template,redirect,url_for
+from flask import Flask,request,render_template,redirect,url_for,jsonify
 from pymongo import MongoClient
 
 app = Flask(__name__)
@@ -31,6 +31,12 @@ def login():
             return redirect(url_for('welcome'))
     return render_template('login.html', error=error)
 
+@app.route('/', methods=['GET'])
+def index_page():
+    response = jsonify({'username': username, 'password': password})
+    response.status_code = 200
+
+    return response
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)

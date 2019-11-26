@@ -35,7 +35,7 @@ def login():
 
 @app.route('/', methods=['GET'])
 def index_page():
-    response = jsonify({'username': username, 'password': username})
+    response = jsonify({'username': username, 'password': password})
     response.status_code = 200
 
     return response
