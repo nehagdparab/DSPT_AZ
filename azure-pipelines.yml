@@ -26,11 +26,13 @@ steps:
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
     tags: 'latest'
+    
 - task: AzureAppServiceManage@0
   inputs:
     azureSubscription: 'Free Trial(0d119fa6-53bc-4568-8d4d-28e6aa7ad897)'
     Action: 'Stop Azure App Service'
     WebAppName: 'dsptappmongo'
+    
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
@@ -40,8 +42,18 @@ steps:
     DockerNamespace: 'dsptnehareg.azurecr.io'
     DockerRepository: 'dsptapp'
     DockerImageTag: 'latest'
+    
 - task: AzureAppServiceManage@0
   inputs:
     azureSubscription: 'Free Trial(0d119fa6-53bc-4568-8d4d-28e6aa7ad897)'
     Action: 'Start Azure App Service'
     WebAppName: 'dsptappmongo'
+    
+- script: |
+    python -m pip install --upgrade pip
+    pip install pytest pytest-azurepipelines
+  displayName: 'Install dependencies'
+
+- script: |
+    python3 -m pytest unit_test.py
+  displayName: 'pytest'    
