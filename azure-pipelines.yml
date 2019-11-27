@@ -50,7 +50,7 @@ steps:
     WebAppName: 'dsptappmongo'
     
 - script: |
-    python -m pip install --upgrade pip
+    python3 -m pip install --upgrade pip
     pip install pytest pytest-azurepipelines
   displayName: 'Install dependencies'
 
