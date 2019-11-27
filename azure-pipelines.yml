@@ -20,8 +20,9 @@ steps:
   displayName: 'Run a multi-line script'
 
 - script: |
-    sudo apt-get update -y
-    sudo apt-get install -y python-pytest
+    python --version
+    pip install --upgrade pip
+    pip install -U pytest
     pytest --version
   displayName: 'Install dependencies'
 
