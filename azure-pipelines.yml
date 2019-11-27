@@ -21,6 +21,8 @@ steps:
 
 - script: |
     python --version
+    pip install wheel
+    python setup.py bdist_wheel 
     pip install -U pytest
     pytest --version
   displayName: 'Install dependencies'
