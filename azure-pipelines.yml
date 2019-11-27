@@ -21,7 +21,7 @@ steps:
 
 - script: |
     python --version
-    pip install -y pytest
+    pip install -U pytest
     pytest --version
   displayName: 'Install dependencies'
 
