@@ -19,11 +19,11 @@ def mongodb():
     username = data['username']
     password = data['password']
     return username,password
-
+username,password = mongodb()
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
-    username,password = mongodb()
+    
     if request.method == 'POST':
         if request.form['username'] != username or request.form['password'] != password:
             error = 'Invalid Credentials. Please try again.'
