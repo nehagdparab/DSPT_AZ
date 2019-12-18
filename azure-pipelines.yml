@@ -29,22 +29,22 @@ steps:
     
 - task: AzureAppServiceManage@0
   inputs:
-    azureSubscription: 'Free Trial(0d119fa6-53bc-4568-8d4d-28e6aa7ad897)'
+    azureSubscription: 'dsptreg_armsc'
     Action: 'Stop Azure App Service'
-    WebAppName: 'dsptappmongo'
+    WebAppName: 'dsptappmongodev'
     
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
-    azureSubscription: 'Free Trial(0d119fa6-53bc-4568-8d4d-28e6aa7ad897)'
+    azureSubscription: 'dsptreg_armsc'
     appType: 'webAppContainer'
-    WebAppName: 'dsptappmongo'
-    DockerNamespace: 'dsptnehareg.azurecr.io'
+    WebAppName: 'dsptappmongodev'
+    DockerNamespace: 'dsptreg.azurecr.io'
     DockerRepository: 'dsptapp'
     DockerImageTag: 'latest'
     
 - task: AzureAppServiceManage@0
   inputs:
-    azureSubscription: 'Free Trial(0d119fa6-53bc-4568-8d4d-28e6aa7ad897)'
+    azureSubscription: 'dsptreg_armsc'
     Action: 'Start Azure App Service'
-    WebAppName: 'dsptappmongo'
+    WebAppName: 'dsptappmongodev'
