@@ -12,7 +12,7 @@ def hello():
     return render_template('hello.html')
 
 def mongodb():
-    client = MongoClient('104.45.149.96',27017)
+    client = MongoClient('40.114.15.254',27017)
     db=client.usertable
     data = db.userdata.find_one()
     print(data)
